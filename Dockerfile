@@ -1,9 +1,12 @@
 FROM golang:1.20-alpine
 
+RUN apk add git make
+
 WORKDIR /app
 
-COPY go.mod ./
-COPY go.sum ./
+ENV GOPROXY=direct
+ENV GOSUMDB=off
+COPY . ./
 RUN go mod download
 
 COPY *.go ./

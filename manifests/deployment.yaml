@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exemplars-app
+spec:
+  selector:
+    matchLabels:
+      name: exemplars-app
+  template:
+    metadata:
+      labels:
+        name: exemplars-app
+    spec:
+      containers:
+      - name: exemplars-app
+        image: yeya24/exemplars-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          name: web
+        resources: 
+            {}
